@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>AccountHistory</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\src\assets\images\**" />
+    <Compile Remove="wwwroot\src\vendor\**" />
+    <Content Remove="wwwroot\src\assets\images\**" />
+    <Content Remove="wwwroot\src\vendor\**" />
+    <EmbeddedResource Remove="wwwroot\src\assets\images\**" />
+    <EmbeddedResource Remove="wwwroot\src\vendor\**" />
+    <None Remove="wwwroot\src\assets\images\**" />
+    <None Remove="wwwroot\src\vendor\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha1-final" />
+    <PackageReference Include="WindowsAzure.Storage" Version="8.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\src\" />
+    <Folder Include="wwwroot\src\js\" />
+    <Folder Include="wwwroot\src\assets\" />
+    <Folder Include="wwwroot\src\css\" />
+  </ItemGroup>
+</Project>
