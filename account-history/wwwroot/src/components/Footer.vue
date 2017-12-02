@@ -8,7 +8,7 @@
 
 <script>
   module.exports = {
-    name: 'botogp-footer',
+    name: 'app-footer',
     data() {
       return {
         copyright: '2017 - swizkon'
