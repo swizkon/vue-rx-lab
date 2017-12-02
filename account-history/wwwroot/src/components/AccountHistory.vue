@@ -18,7 +18,7 @@
 
 <script>
   export default {
-    name: 'circuit',
+    name: 'accountHistory',
     data() { 
       return {
         title: 'Entity history',
@@ -44,7 +44,7 @@
     },
     updated (){
       this.$nextTick(function () {
-        // Handle data?
+        // Handle data? 
       })
     }
   }

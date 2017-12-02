@@ -5,7 +5,7 @@ import router from './router'
 
 import Toasted from 'vue-toasted';
 
-import CircuitDetails from './components/CircuitDetails'
+import AccountHistory from './components/AccountHistory'
 import Footer from './components/Footer'
 
 import "vueify/lib/insert-css" // required for .vue file <style> tags
@@ -23,7 +23,7 @@ new Vue({
     router,
     render: h => h(App),
     components: {
-       'circuit-details': CircuitDetails,
+       'account-history': AccountHistory,
        'app-footer': Footer 
     }
 })

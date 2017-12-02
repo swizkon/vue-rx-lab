@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Hello from '../components/Hello'
-import CircuitDetails from '../components/CircuitDetails'
+import AccountHistory from '../components/AccountHistory'
 
 Vue.use(Router)
 
@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/accounts/:id/history',
       name: 'AccountHistory',
-      component: CircuitDetails
+      component: AccountHistory
     },
     {
       path: '*',
