@@ -15,7 +15,7 @@ export default new Router({
     },
     {
       path: '/accounts/:id/history',
-      name: 'CircuitDetails',
+      name: 'AccountHistory',
       component: CircuitDetails
     },
     {

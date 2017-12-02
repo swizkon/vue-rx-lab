@@ -24,6 +24,6 @@ new Vue({
     render: h => h(App),
     components: {
        'circuit-details': CircuitDetails,
-       'footer': Footer 
+       'app-footer': Footer 
     }
 })

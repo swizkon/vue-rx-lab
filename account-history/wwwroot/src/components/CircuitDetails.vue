@@ -33,7 +33,7 @@
       
       _this.error = this.circuitDetails = null
       _this.loading = true
-      $.getJSON('/api/circuits/' + this.$route.params.id)
+      $.getJSON('/api/accountEvent/' + this.$route.params.id)
       .then((data) => {
           _this.circuitDetails = data
           _this.loading = false
@@ -41,6 +41,11 @@
           _this.loading = false
           _this.error = err;
       });
+    },
+    updated (){
+      this.$nextTick(function () {
+        // Handle data?
+      })
     }
   }
 </script>
