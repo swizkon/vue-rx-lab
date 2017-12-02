@@ -10,7 +10,6 @@
     "vue-toasted": "^1.1.22"
   },
   "devDependencies": {
-    "@aspnet/signalr-client": "^1.0.0-alpha1-final",
     "babel-brunch": "^6.0.6",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",

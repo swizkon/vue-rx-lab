@@ -49,6 +49,7 @@ namespace AccountHistory.Controllers
 
         private string formatQuery(long accountId)
         {
+            return "SELECT * FROM Stuff";
         }
     }
 }

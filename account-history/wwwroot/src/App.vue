@@ -1,13 +1,13 @@
 <template>
   <div class="container body-content">
-    <nav></nav>
+    <app-nav></app-nav>
     <div id="app">
       <div class="hello">
         <h1>{{ msg }}</h1>
       </div>
       <router-view></router-view>
     </div>
-    <footer></footer>
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -24,8 +24,8 @@ import Footer from './components/Footer'
       }
     },
     components: {
-      'nav': Nav,
-      'footer': Footer
+      'app-nav': Nav,
+      'app-footer': Footer
     }
   } 
 </script>
