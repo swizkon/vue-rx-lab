@@ -21,9 +21,9 @@
     name: 'circuit',
     data() { 
       return {
-        title: 'Circuit details...',
+        title: 'Entity history',
         circuitDetails: null,
-        loading: false,
+        loading: true,
         error: null
       }
     },
@@ -33,7 +33,7 @@
       
       _this.error = this.circuitDetails = null
       _this.loading = true
-      $.getJSON('/api/accountEvent/' + this.$route.params.id)
+      $.getJSON('/api/accountEvent?accountId=' + this.$route.params.id)
       .then((data) => {
           _this.circuitDetails = data
           _this.loading = false
