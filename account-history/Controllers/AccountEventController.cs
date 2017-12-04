@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using AccountHistory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AccountHistory.Controllers
 {
@@ -11,10 +13,13 @@ namespace AccountHistory.Controllers
     public class AccountEventController : Controller
     {
         private readonly IConfiguration _configuration;
+        private readonly IHostingEnvironment _environment;
 
-        public AccountEventController(IConfiguration configuration)
+        public AccountEventController(IConfiguration configuration, IHostingEnvironment environment)
         {
             _configuration = configuration;
+
+            _environment = environment;
         }
 
         [HttpGet]
@@ -22,6 +27,13 @@ namespace AccountHistory.Controllers
         {
             var events = GetAllEvents(accountId);
             return events;
+        }
+
+
+        [HttpGet("mocks")]
+        public IEnumerable<string> GetMocks()
+        {
+            return Directory.GetFiles(Path.Combine(_environment.ContentRootPath, "MockData"));
         }
 
         private IEnumerable<AccountEvent> GetAllEvents(long accountId)

@@ -4,6 +4,7 @@
     <form v-on:submit.prevent="onSubmit">
       <input class="input-lg" name="entityid" type="number" v-model="entityId" placeholder="Enter entity id" />
     </form>
+    - or select preview -
   </div>
 </template>
 
@@ -12,7 +13,7 @@
     name: 'hello',
     data() { 
       return {
-        label: `Enter  id`,
+        label: `Enter entity id`,
         entityId: '12345'
       }
     },
@@ -21,6 +22,13 @@
     },
 
     created () {
+          this.$toasted.info('Loading pre-defined template')
+          fetch('/api/accountEvent/mocks').then(function(response) {
+            return response.json();
+          }).then(function(jsonData) {
+            // var objectURL = URL.createObjectURL(jsonData);
+            console.log(jsonData);
+          });
     },
     methods: {
         onSubmit: function (event) {
