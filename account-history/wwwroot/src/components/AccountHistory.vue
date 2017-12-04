@@ -13,6 +13,9 @@
       <h2>{{ circuitDetails.name }}</h2>
       <p>{{ circuitDetails.id }}</p>
     </div>
+
+    <h3>Dump</h3>
+    <pre><code>{{dump}}</code></pre>
   </div>
 </template>
 
@@ -24,23 +27,30 @@
         title: 'Entity history',
         circuitDetails: null,
         loading: true,
-        error: null
+        error: null,
+        dump: null
       }
     },
 
     created () {
-      var _this = this;
+      var _this = this
+      var id = this.$route.params.id
+
+      console.log(id)
       
-      _this.error = this.circuitDetails = null
       _this.loading = true
-      $.getJSON('/api/accountEvent?accountId=' + this.$route.params.id)
-      .then((data) => {
-          _this.circuitDetails = data
-          _this.loading = false
-      }, (err) => {
-          _this.loading = false
-          _this.error = err;
-      });
+
+      var url = (id) ? "/api/accountEvent?accountId=" + id 
+      : "/api/accountEvent/mocks/" + this.$route.params.mockfile
+
+      this.$toasted.info("url: " + url)
+
+          fetch(url)
+          .then(function(response) {
+            return response.json();
+          }).then(function(jsonData) {
+            _this.dump = jsonData
+          });
     },
     updated (){
       this.$nextTick(function () {

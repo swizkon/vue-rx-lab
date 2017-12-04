@@ -19,6 +19,11 @@ export default new Router({
       component: AccountHistory
     },
     {
+      path: '/mocks/:mockfile',
+      name: 'MockHistory',
+      component: AccountHistory
+    },
+    {
       path: '*',
       redirect: '/'
     }

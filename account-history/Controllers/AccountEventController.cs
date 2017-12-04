@@ -36,8 +36,16 @@ namespace AccountHistory.Controllers
         {
             return Directory
                         .GetFiles(Path.Combine(_environment.ContentRootPath, "MockData"))
-                        .Select(Path.GetFileName)
-                        .Select(x => "/api/accountEvent/mocks/" + x);
+                        .Select(Path.GetFileName);
+                        // .Select(x => "/api/accountEvent/mocks/" + x);
+        }
+
+        [HttpGet("mocks/{filename}")]
+        public object GetMockData(string filename)
+        {
+            var filepath = Path.Combine(_environment.ContentRootPath, "MockData", filename);
+            var data = System.IO.File.ReadAllText(filepath);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(data);
         }
 
         private IEnumerable<AccountEvent> GetAllEvents(long accountId)

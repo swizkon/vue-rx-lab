@@ -6,7 +6,9 @@
     </form>
     - or select preview mock -
     <ul v-if="mocks">
-      <li v-for="d in mocks">{{ d }}</li>
+      <li v-for="d in mocks">
+        <a :href="'/accounts.html#/mocks/' + d">{{ d }}</a>
+      {{ d }}</li>
     </ul>
   </div>
 </template>
