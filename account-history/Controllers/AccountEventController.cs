@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using AccountHistory.Models;
@@ -33,7 +34,10 @@ namespace AccountHistory.Controllers
         [HttpGet("mocks")]
         public IEnumerable<string> GetMocks()
         {
-            return Directory.GetFiles(Path.Combine(_environment.ContentRootPath, "MockData"));
+            return Directory
+                        .GetFiles(Path.Combine(_environment.ContentRootPath, "MockData"))
+                        .Select(Path.GetFileName)
+                        .Select(x => "/api/accountEvent/mocks/" + x);
         }
 
         private IEnumerable<AccountEvent> GetAllEvents(long accountId)

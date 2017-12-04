@@ -4,7 +4,10 @@
     <form v-on:submit.prevent="onSubmit">
       <input class="input-lg" name="entityid" type="number" v-model="entityId" placeholder="Enter entity id" />
     </form>
-    - or select preview -
+    - or select preview mock -
+    <ul v-if="mocks">
+      <li v-for="d in mocks">{{ d }}</li>
+    </ul>
   </div>
 </template>
 
@@ -14,27 +17,23 @@
     data() { 
       return {
         label: `Enter entity id`,
-        entityId: '12345'
+        entityId: '12345',
+        mocks: null
       }
     },
-    
-    components: {
-    },
-
     created () {
+        var _this = this;
           this.$toasted.info('Loading pre-defined template')
           fetch('/api/accountEvent/mocks').then(function(response) {
             return response.json();
           }).then(function(jsonData) {
-            // var objectURL = URL.createObjectURL(jsonData);
-            console.log(jsonData);
+            _this.mocks = jsonData
           });
     },
     methods: {
         onSubmit: function (event) {
           this.$toasted.info('Go to history for entity ' + this.entityId)
-          
-          this.$router.push({ name: 'AccountHistory', params: { id: this.entityId }})
+          this.$router.push({ name: 'AccountHistory', params: { id: this.entityId}})
         }
       }
   }
