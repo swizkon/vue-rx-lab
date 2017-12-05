@@ -11,9 +11,11 @@ namespace AccountHistory.Models
         [JsonProperty(PropertyName = "eventType")]
         public string EventType { get; set; }
         
-        [JsonProperty(PropertyName = "value")] public string Value { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
-        [JsonProperty(PropertyName = "data")] public string Data { get; set; }
+        [JsonProperty(PropertyName = "data")]
+        public string Data { get; set; }
 
         [JsonProperty(PropertyName = "source")]
         public string Source { get; set; }

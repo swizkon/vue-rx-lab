@@ -1,7 +1,30 @@
 [
     {
         "timestamp": "2017-01-01 23:45:62.000Z",
-        "eventType": "Created",
-        "source": "THE_SOURCE"
+        "eventType": "AccountCreated",
+        "value": "SomeAccount",
+        "data": "",
+        "source": "API"
+    },
+    {
+        "timestamp": "2017-01-01 23:45:63.000Z",
+        "eventType": "Transaction",
+        "value": "Purchase",
+        "data": "-100",
+        "source": "API"
+    },
+    {
+        "timestamp": "2017-01-01 23:45:62.000Z",
+        "eventType": "Transaction",
+        "value": "Purchase",
+        "data": "-100",
+        "source": "API"
+    },
+    {
+        "timestamp": "2017-01-02 23:45:62.000Z",
+        "eventType": "AccountNotified",
+        "value": "SomeAccount",
+        "data": "",
+        "source": "PROCESS"
     }
 ]
