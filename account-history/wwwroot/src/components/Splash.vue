@@ -14,17 +14,19 @@
 
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import VueMarkdown from './vue-markdown'
 
   export default {
     name: 'splash',
     data() {
       return {
-        msg: 'Enter account id:' 
+        msg: 'Test of the vue markdown component' 
       }
     },
     components: {
       'app-nav': Nav,
-      'app-footer': Footer
+      'app-footer': Footer,
+      VueMarkdown
     },
     created () {
     }
