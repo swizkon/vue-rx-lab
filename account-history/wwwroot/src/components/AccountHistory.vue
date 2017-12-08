@@ -20,6 +20,9 @@
 </template>
 
 <script>
+
+  import { Observable, Subject } from "rxjs/Rx"
+
   export default {
     name: 'accountHistory',
     data() { 
@@ -41,16 +44,21 @@
       _this.loading = true
 
       var url = (id) ? "/api/accountEvent?accountId=" + id 
-      : "/api/accountEvent/mocks/" + this.$route.params.mockfile
+                    : "/api/accountEvent/mocks/" + this.$route.params.mockfile
 
       this.$toasted.info("url: " + url)
 
-          fetch(url)
-          .then(function(response) {
-            return response.json();
-          }).then(function(jsonData) {
-            _this.dump = jsonData
-          });
+        fetch(url)
+        .then(function(response) {
+          return response.json();
+         }).then(function(jsonData) {
+         _this.dump = jsonData
+
+                 // Observable.from(jsonData)
+                 //           .subscribe(function (e) {
+                 //         this.$toasted.info("e: " + e)
+                 //           });
+        });
     },
     updated (){
       this.$nextTick(function () {
