@@ -14,8 +14,6 @@ i am a ~~tast~~ **test**.
 - Othe 
 </vue-markdown>
 
-      <VueMarkdown>:) Another  stuff</VueMarkdown>
-
     <app-footer></app-footer>
   </div>
 </template>

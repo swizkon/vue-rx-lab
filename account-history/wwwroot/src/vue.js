@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import App from './App'
+import AccountHistory from './components/AccountHistory'
 
 import router from './router'
 
 import Toasted from 'vue-toasted';
 
-import AccountHistory from './components/AccountHistory'
+import RxJS from 'rxjs';
+import {Observable} from 'rxjs/Observable';
+// import AccountHistory from './components/AccountHistory'
+
 import Footer from './components/Footer'
 
 import "vueify/lib/insert-css" // required for .vue file <style> tags

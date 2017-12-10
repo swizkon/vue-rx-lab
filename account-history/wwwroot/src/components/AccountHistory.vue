@@ -9,6 +9,8 @@
         Error: {{ error }}
     </div>
 
+    <h2>lastProcess: <strong>{{ lastProcess }}</strong></h2>
+
     <div v-if="circuitDetails" class="content">
       <h2>{{ circuitDetails.name }}</h2>
       <p>{{ circuitDetails.id }}</p>
@@ -21,7 +23,8 @@
 
 <script>
 
-  import { Observable, Subject } from "rxjs/Observable"
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/interval'
 
   export default {
     name: 'accountHistory',
@@ -29,6 +32,7 @@
       return {
         title: 'Entity history',
         circuitDetails: null,
+        lastProcess: null,
         loading: true,
         error: null,
         dump: null
@@ -54,16 +58,21 @@
          }).then(function(jsonData) {
          _this.dump = jsonData
 
-                 // Observable.from(jsonData)
-                 //           .subscribe(function (e) {
-                 //         this.$toasted.info("e: " + e)
-                 //           });
+            var timer$ = Observable.interval(300)
+            var event$ = Observable.from(jsonData)
+
+            var stream = Observable.zip(event$, timer$, (a,b) => a);
+
+            stream.subscribe(function (e) {
+                          _this.$toasted.info("e: " + e.source)
+                            });
+
+            stream.pluck('source')
+                      .distinctUntilChanged()
+                      .subscribe(v => {
+                        _this.lastProcess = v;
+                      });                            
         });
-    },
-    updated (){
-      this.$nextTick(function () {
-        // Handle data? 
-      })
     }
   }
 </script>
