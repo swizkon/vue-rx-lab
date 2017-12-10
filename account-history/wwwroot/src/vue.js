@@ -6,9 +6,14 @@ import router from './router'
 
 import Toasted from 'vue-toasted';
 
-import RxJS from 'rxjs';
-import {Observable} from 'rxjs/Observable';
-// import AccountHistory from './components/AccountHistory'
+// import RxJS from 'rxjs'; 
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/interval'
+import 'rxjs/add/observable/from'
+import 'rxjs/add/observable/zip'
+import 'rxjs/add/operator/pluck'
+import 'rxjs/add/operator/distinctUntilChanged'
+import 'rxjs/add/operator/map'
 
 import Footer from './components/Footer'
 

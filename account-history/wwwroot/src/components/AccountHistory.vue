@@ -17,14 +17,15 @@
     </div>
 
     <h3>Dump</h3>
-    <pre><code>{{dump}}</code></pre>
+    <pre v-for="d in dumps"><code>{{d}}</code></pre>
   </div>
 </template>
 
 <script>
 
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable' 
 import 'rxjs/add/observable/interval'
+import 'rxjs/add/operator/map'
 
   export default {
     name: 'accountHistory',
@@ -35,7 +36,7 @@ import 'rxjs/add/observable/interval'
         lastProcess: null,
         loading: true,
         error: null,
-        dump: null
+        dumps: []
       }
     },
 
@@ -48,7 +49,7 @@ import 'rxjs/add/observable/interval'
       _this.loading = true
 
       var url = (id) ? "/api/accountEvent?accountId=" + id 
-                    : "/api/accountEvent/mocks/" + this.$route.params.mockfile
+                     : "/api/accountEvent/mocks/" + this.$route.params.mockfile
 
       this.$toasted.info("url: " + url)
 
@@ -56,17 +57,24 @@ import 'rxjs/add/observable/interval'
         .then(function(response) {
           return response.json();
          }).then(function(jsonData) {
-         _this.dump = jsonData
+         // _this.dump = jsonData
 
             var timer$ = Observable.interval(300)
             var event$ = Observable.from(jsonData)
 
             var stream = Observable.zip(event$, timer$, (a,b) => a);
 
+            stream.map(JSON['stringify'])
+                  .subscribe(v => {
+                    _this.dumps.push(v);
+                  });
+            /*
             stream.subscribe(function (e) {
-                          _this.$toasted.info("e: " + e.source)
+                          // _this.$toasted.info("e: " + JSON['stringify'](e))
+                          _this.dumps.push(JSON['stringify'](e));
+                          // console.log(JSON['stringify'](e));
                             });
-
+            */
             stream.pluck('source')
                       .distinctUntilChanged()
                       .subscribe(v => {

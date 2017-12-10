@@ -61,7 +61,7 @@
 
   modules: {
     autoRequire: {
-      // "js/app.js": ["src/js/app"]
+      "js/app.js": ["src/js/app"]
     }
   },
 
