@@ -1,0 +1,25 @@
+
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-continuous-deployment
+
+https://www.google.se/search?q=Clean+Architecture&oq=Clean+Architecture&aqs=chrome..69i57j0l5.174j0j7&sourceid=chrome&ie=UTF-8
+
+
+
+
+Return transactions of some kind
+
+
+Batch per date
+------------------------------------------
+Partition key:  Datum
+Row key:        AccountId
+
+
+
+
+Handle each account
+------------------------------------------
+Partition key:  AccountId
+Row key:        Datum (timestamp) (alt timestamp + state?)
+State:          SomeState
+AccountType:    SomeAccountType
